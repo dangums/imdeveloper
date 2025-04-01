@@ -1,0 +1,359 @@
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design Web Moderno</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="layout.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script type="importmap">
+        {
+            "imports": {
+                "gsap": "https://cdn.jsdelivr.net/npm/gsap@3.12.2/+esm",
+                "ScrollTrigger": "https://cdn.jsdelivr.net/npm/gsap@3.12.2/ScrollTrigger.js"
+            }
+        }
+    </script>
+    <script src="config.js" type="module"></script>
+    <script src="main.js" type="module" defer></script>
+</head>
+<body>
+
+    <div class="background-shapes">
+        <!-- These SVG shapes will be animated in the background -->
+        <svg class="shape shape-1" viewBox="0 0 100 100">
+            <polygon points="50,0 100,50 50,100 0,50" />
+        </svg>
+        <svg class="shape shape-2" viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="40" />
+        </svg>
+        <svg class="shape shape-3" viewBox="0 0 100 100">
+            <rect x="10" y="10" width="80" height="80" rx="10" />
+        </svg>
+        <svg class="shape shape-4" viewBox="0 0 100 100">
+            <polygon points="50,10 90,90 10,90" />
+        </svg>
+    </div>
+
+    <header class="glass-effect">
+        <div class="logo">
+            <!--<svg viewBox="0 0 250 60" width="250" height="60">-->
+                <!--<path d="M20,40 L40,20 L60,40 L80,20 L100,40" stroke="var(--primary-blue)" stroke-width="4" fill="none" />-->
+                <img src="images/printblue.png" alt="Logo Design" class="logo-image">
+                <!--<text x="120" y="40" fill="var(--primary-blue)" font-size="28" font-weight="bold">DESIGN</text>-->
+            <!--</svg>-->
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#home" class="active">Início</a></li>
+                <li><a href="#services">Serviços</a></li>
+                <li><a href="#portfolio">Portfólio</a></li>
+                <li><a href="#about">Sobre</a></li>
+                <li><a href="#contact" class="nav-btn">Contato</a></li>
+            </ul>
+        </nav>
+        <div class="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+
+            <div class="hero-video-container">
+                <video autoplay muted loop playsinline class="hero-video">
+                    <source src="videos/video01.mp4" type="video/mp4">
+                    <!-- Adicione formatos alternativos se necessário -->
+                    <source src="videos/video01.webm" type="video/webm">
+                </video>
+            </div>
+
+            <div class="hero-content">
+                <h1 class="animate-text">Soluções Acertivas de Desenvolvimento Web e muito mais</h1>
+                <p class="animate-text delay-1">  Eleve sua presença digital com designs modernos e sofisticados.<br><br>
+                        Aumente a produtividade do seu negócio com apps feitos sob medida para atender as demandas personalidadas de a cordo com a sua necessidade.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#services" class="btn primary-btn">
+                        <span>Nossos Serviços</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="#portfolio" class="btn secondary-btn">
+                        <span>Ver Portfólio</span>
+                        <i class="fas fa-images"></i>
+                    </a>
+                </div>
+            </div>
+
+        </section>
+
+        <section id="services" class="services">
+            <h2 class="section-title">Nossos Serviços</h2>
+            <div class="section-subtitle">Soluções completas de design web para suas necessidades digitais</div>
+            
+            <div class="services-grid">
+                <div class="service-card glass-effect">
+                    <div class="service-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3>Design de Sites</h3>
+                    <p>Designs de web personalizados que são visualmente deslumbrantes e amigáveis ao usuário.</p>
+                    <a href="#contact" class="service-link">Saiba Mais <i class="fas fa-chevron-right"></i></a>
+                </div>
+                
+                <div class="service-card glass-effect">
+                    <div class="service-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Design Responsivo</h3>
+                    <p>Sites que funcionam perfeitamente em todos os dispositivos e tamanhos de tela.</p>
+                    <a href="#contact" class="service-link">Saiba Mais <i class="fas fa-chevron-right"></i></a>
+                </div>
+                
+                <div class="service-card glass-effect">
+                    <div class="service-icon">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <h3>Design UI/UX</h3>
+                    <p>Interfaces intuitivas com experiências de usuário perfeitas.</p>
+                    <a href="#contact" class="service-link">Saiba Mais <i class="fas fa-chevron-right"></i></a>
+                </div>
+                
+                <div class="service-card glass-effect">
+                    <div class="service-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>Otimização de Desempenho</h3>
+                    <p>Sites de carregamento rápido otimizados para desempenho.</p>
+                    <a href="#contact" class="service-link">Saiba Mais <i class="fas fa-chevron-right"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <section id="portfolio" class="portfolio">
+            <h2 class="section-title">Portfólio</h2>
+            <div class="section-subtitle">Uma mostra de nossos trabalhos recentes</div>
+            
+            <div class="portfolio-filters">
+                <button class="filter-btn active" data-filter="all">Todos</button>
+                <button class="filter-btn" data-filter="web">Web Design</button>
+                <button class="filter-btn" data-filter="mobile">Mobile</button>
+                <button class="filter-btn" data-filter="branding">Branding</button>
+            </div>
+            
+            <div class="portfolio-grid">
+                <div class="portfolio-item" data-category="web">
+                    <div class="portfolio-image glass-effect">
+                        <!--<svg viewBox="0 0 400 300" class="placeholder-image">
+                            <rect width="400" height="300" fill="var(--dark-bg-color)" />
+                            <circle cx="200" cy="150" r="80" fill="var(--primary-blue)" opacity="0.3" />
+                            <rect x="120" y="70" width="160" height="160" stroke="var(--accent-blue)" stroke-width="4" fill="none" />
+                        </svg>-->
+                        <div class="portfolio-overlay">
+                            <h3>Site E-Commerce</h3>
+                            <p>Web Design, UI/UX</p>
+                            <a href="#" class="portfolio-link"><i class="fas fa-eye"></i> Ver Projeto</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item" data-category="mobile">
+                    <div class="portfolio-image glass-effect">
+                        <svg viewBox="0 0 400 300" class="placeholder-image">
+                            <rect width="400" height="300" fill="var(--dark-bg-color)" />
+                            <rect x="140" y="50" width="120" height="200" rx="20" fill="none" stroke="var(--primary-blue)" stroke-width="4" />
+                            <rect x="150" y="70" width="100" height="160" rx="10" fill="var(--primary-blue)" opacity="0.2" />
+                        </svg>
+                        <div class="portfolio-overlay">
+                            <h3>App de Fitness</h3>
+                            <p>Aplicativo Móvel, Design UI</p>
+                            <a href="#" class="portfolio-link"><i class="fas fa-eye"></i> Ver Projeto</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item" data-category="branding">
+                    <div class="portfolio-image glass-effect">
+                        <svg viewBox="0 0 400 300" class="placeholder-image">
+                            <rect width="400" height="300" fill="var(--dark-bg-color)" />
+                            <circle cx="200" cy="150" r="100" fill="none" stroke="var(--accent-blue)" stroke-width="4" />
+                            <path d="M150,120 L250,120 L200,200 Z" fill="var(--primary-blue)" opacity="0.4" />
+                        </svg>
+                        <div class="portfolio-overlay">
+                            <h3>Identidade de Marca Tech</h3>
+                            <p>Branding, Design de Logo</p>
+                            <a href="#" class="portfolio-link"><i class="fas fa-eye"></i> Ver Projeto</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item" data-category="web">
+                    <div class="portfolio-image glass-effect">
+                        <svg viewBox="0 0 400 300" class="placeholder-image">
+                            <rect width="400" height="300" fill="var(--dark-bg-color)" />
+                            <line x1="50" y1="50" x2="350" y2="50" stroke="var(--primary-blue)" stroke-width="4" />
+                            <line x1="50" y1="100" x2="250" y2="100" stroke="var(--primary-blue)" stroke-width="4" />
+                            <rect x="50" y="130" width="300" height="120" rx="10" fill="var(--accent-blue)" opacity="0.3" />
+                        </svg>
+                        <div class="portfolio-overlay">
+                            <h3>Site Corporativo</h3>
+                            <p>Web Design, Desenvolvimento</p>
+                            <a href="#" class="portfolio-link"><i class="fas fa-eye"></i> Ver Projeto</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="about">
+            <h2 class="section-title">Sobre Mim</h2>
+            <div class="about-content">
+                <div class="about-image glass-effect">
+                    <svg viewBox="0 0 300 300" class="profile-placeholder">
+                        <circle cx="150" cy="120" r="80" fill="var(--primary-blue)" opacity="0.2" />
+                        <circle cx="150" cy="100" r="40" fill="var(--dark-bg-color)" stroke="var(--primary-blue)" stroke-width="2" />
+                        <path d="M90,220 Q150,280 210,220" stroke="var(--primary-blue)" stroke-width="3" fill="none" />
+                        <circle cx="120" cy="90" r="5" fill="var(--accent-blue)" />
+                        <circle cx="180" cy="90" r="5" fill="var(--accent-blue)" />
+                    </svg>
+                </div>
+                <div class="about-text">
+                    <h3>Designer & Desenvolvedor Web</h3>
+                    <p>Sou um designer web apaixonado com mais de 5 anos de experiência criando experiências digitais modernas e sofisticadas para clientes em várias indústrias.</p>
+                    <p>Minha abordagem combina princípios estéticos de design com expertise técnica para entregar sites que não apenas parecem ótimos, mas também têm desempenho excepcional.</p>
+                    <div class="skills">
+                        <div class="skill">
+                            <span>Design UI/UX</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 95%"></div>
+                            </div>
+                        </div>
+                        <div class="skill">
+                            <span>HTML/CSS</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div class="skill">
+                            <span>JavaScript</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div class="skill">
+                            <span>Design Responsivo</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 92%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="about-buttons">
+                        <a href="#" class="btn primary-btn">
+                            <span>Baixar CV</span>
+                            <i class="fas fa-download"></i>
+                        </a>
+                        <a href="#contact" class="btn secondary-btn">
+                            <span>Fale Comigo</span>
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact">
+            <h2 class="section-title">Entre em Contato</h2>
+            <div class="section-subtitle">Vamos discutir seu projeto</div>
+            
+            <div class="contact-container">
+                <div class="contact-info glass-effect">
+                    <div class="contact-method">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Email</h3>
+                            <p>ola@webdesigner.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-method">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Telefone</h3>
+                            <p>+55 (11) 98765-4321</p>
+                        </div>
+                    </div>
+                    <div class="contact-method">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Localização</h3>
+                            <p>São Paulo, SP</p>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-dribbble"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-behance"></i></a>
+                    </div>
+                </div>
+                
+                <form class="contact-form glass-effect">
+                    <div class="form-group">
+                        <input type="text" id="name" name="name" placeholder="Seu Nome" required>
+                        <label for="name">Seu Nome</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" name="email" placeholder="Seu Email" required>
+                        <label for="email">Seu Email</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="subject" name="subject" placeholder="Assunto" required>
+                        <label for="subject">Assunto</label>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" name="message" placeholder="Sua Mensagem" required></textarea>
+                        <label for="message">Sua Mensagem</label>
+                    </div>
+                    <button type="submit" class="btn primary-btn">
+                        <span>Enviar Mensagem</span>
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="glass-effect">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <!--<svg viewBox="0 0 200 60">
+                    <path d="M20,40 L40,20 L60,40 L80,20 L100,40" stroke="var(--primary-blue)" stroke-width="4" fill="none" />
+                    <text x="110" y="40" fill="var(--primary-blue)" font-size="28" font-weight="bold">DESIGN</text>
+                </svg>-->
+                <img src="images/printblue.png" alt="Logo Design" class="logo-image">
+            </div>
+            <div class="footer-text">
+                <p>Criando experiências web deslumbrantes para empresas visionárias.</p>
+            </div>
+            <div class="footer-links">
+                <a href="#home">Início</a>
+                <a href="#services">Serviços</a>
+                <a href="#portfolio">Portfólio</a>
+                <a href="#about">Sobre</a>
+                <a href="#contact">Contato</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Design Web Moderno. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+</body>
+</html>

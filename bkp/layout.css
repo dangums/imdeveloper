@@ -1,0 +1,24 @@
+/* Alignment fixes for left-side objects */
+.hero-content {
+    margin-left: 2%;
+}
+
+.section-title {
+    transform: translateX(-50%);
+    margin-left: 0;
+}
+
+.about-content,
+.services-grid,
+.portfolio-grid,
+.contact-container {
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+@media (max-width: 992px) {
+    .hero-content {
+        margin-left: 0;
+    }
+}
+

@@ -1,0 +1,354 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Web Design</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="layout.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script type="importmap">
+        {
+            "imports": {
+                "gsap": "https://cdn.jsdelivr.net/npm/gsap@3.12.2/+esm",
+                "ScrollTrigger": "https://cdn.jsdelivr.net/npm/gsap@3.12.2/ScrollTrigger.js"
+            }
+        }
+    </script>
+    <script src="config.js" type="module"></script>
+    <script src="main.js" type="module" defer></script>
+</head>
+<body>
+    <div class="background-shapes">
+        <!-- These SVG shapes will be animated in the background -->
+        <svg class="shape shape-1" viewBox="0 0 100 100">
+            <polygon points="50,0 100,50 50,100 0,50" />
+        </svg>
+        <svg class="shape shape-2" viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="40" />
+        </svg>
+        <svg class="shape shape-3" viewBox="0 0 100 100">
+            <rect x="10" y="10" width="80" height="80" rx="10" />
+        </svg>
+        <svg class="shape shape-4" viewBox="0 0 200 100">
+            <path d="M0,50 Q50,0 100,50 T200,50" />
+        </svg>
+    </div>
+
+    <header class="glass-effect">
+        <div class="logo">
+            <svg viewBox="0 0 200 60">
+                <path d="M20,40 L40,20 L60,40 L80,20 L100,40" stroke="var(--primary-blue)" stroke-width="4" fill="none" />
+                <text x="110" y="40" fill="var(--primary-blue)" font-size="28" font-weight="bold">DESIGN</text>
+            </svg>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact" class="nav-btn">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1 class="animate-text">Creative Web Design Solutions</h1>
+                <p class="animate-text delay-1">Elevate your digital presence with modern, sophisticated designs</p>
+                <div class="hero-buttons">
+                    <a href="#services" class="btn primary-btn">
+                        <span>Our Services</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="#portfolio" class="btn secondary-btn">
+                        <span>View Portfolio</span>
+                        <i class="fas fa-images"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <svg viewBox="0 0 500 500" class="tech-illustration">
+                    <circle cx="250" cy="250" r="200" fill="none" stroke="var(--primary-blue)" stroke-width="2" stroke-dasharray="10 5" />
+                    <circle cx="250" cy="250" r="150" fill="none" stroke="var(--primary-blue)" stroke-width="2" opacity="0.7" />
+                    <circle cx="250" cy="250" r="100" fill="none" stroke="var(--accent-blue)" stroke-width="3" />
+                    <!-- Additional decorative elements -->
+                    <circle cx="250" cy="250" r="50" fill="var(--accent-blue)" opacity="0.3" />
+                    <rect x="200" y="200" width="100" height="100" fill="none" stroke="var(--primary-blue)" stroke-width="2" transform="rotate(45, 250, 250)" />
+                </svg>
+            </div>
+        </section>
+
+        <section id="services" class="services">
+            <h2 class="section-title">Our Services</h2>
+            <div class="section-subtitle">Comprehensive web design solutions for your digital needs</div>
+            
+            <div class="services-grid">
+                <div class="service-card glass-effect">
+                    <div class="service-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3>Website Design</h3>
+                    <p>Custom web designs that are visually stunning and user-friendly.</p>
+                    <a href="#" class="service-link">Learn More <i class="fas fa-chevron-right"></i></a>
+                </div>
+                
+                <div class="service-card glass-effect">
+                    <div class="service-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Responsive Design</h3>
+                    <p>Sites that work flawlessly across all devices and screen sizes.</p>
+                    <a href="#" class="service-link">Learn More <i class="fas fa-chevron-right"></i></a>
+                </div>
+                
+                <div class="service-card glass-effect">
+                    <div class="service-icon">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <h3>UI/UX Design</h3>
+                    <p>Intuitive interfaces with seamless user experiences.</p>
+                    <a href="#" class="service-link">Learn More <i class="fas fa-chevron-right"></i></a>
+                </div>
+                
+                <div class="service-card glass-effect">
+                    <div class="service-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>Performance Optimization</h3>
+                    <p>Fast-loading websites optimized for performance.</p>
+                    <a href="#" class="service-link">Learn More <i class="fas fa-chevron-right"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <section id="portfolio" class="portfolio">
+            <h2 class="section-title">Portfolio</h2>
+            <div class="section-subtitle">A showcase of our recent work</div>
+            
+            <div class="portfolio-filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="web">Web Design</button>
+                <button class="filter-btn" data-filter="mobile">Mobile</button>
+                <button class="filter-btn" data-filter="branding">Branding</button>
+            </div>
+            
+            <div class="portfolio-grid">
+                <div class="portfolio-item" data-category="web">
+                    <div class="portfolio-image glass-effect">
+                        <svg viewBox="0 0 400 300" class="placeholder-image">
+                            <rect width="400" height="300" fill="var(--dark-bg-color)" />
+                            <circle cx="200" cy="150" r="80" fill="var(--primary-blue)" opacity="0.3" />
+                            <rect x="120" y="70" width="160" height="160" stroke="var(--accent-blue)" stroke-width="4" fill="none" />
+                        </svg>
+                        <div class="portfolio-overlay">
+                            <h3>E-Commerce Website</h3>
+                            <p>Web Design, UI/UX</p>
+                            <a href="#" class="portfolio-link"><i class="fas fa-eye"></i> View Project</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item" data-category="mobile">
+                    <div class="portfolio-image glass-effect">
+                        <svg viewBox="0 0 400 300" class="placeholder-image">
+                            <rect width="400" height="300" fill="var(--dark-bg-color)" />
+                            <rect x="140" y="50" width="120" height="200" rx="20" fill="none" stroke="var(--primary-blue)" stroke-width="4" />
+                            <rect x="150" y="70" width="100" height="160" rx="10" fill="var(--primary-blue)" opacity="0.2" />
+                        </svg>
+                        <div class="portfolio-overlay">
+                            <h3>Fitness App</h3>
+                            <p>Mobile App, UI Design</p>
+                            <a href="#" class="portfolio-link"><i class="fas fa-eye"></i> View Project</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item" data-category="branding">
+                    <div class="portfolio-image glass-effect">
+                        <svg viewBox="0 0 400 300" class="placeholder-image">
+                            <rect width="400" height="300" fill="var(--dark-bg-color)" />
+                            <circle cx="200" cy="150" r="100" fill="none" stroke="var(--accent-blue)" stroke-width="4" />
+                            <path d="M150,120 L250,120 L200,200 Z" fill="var(--primary-blue)" opacity="0.4" />
+                        </svg>
+                        <div class="portfolio-overlay">
+                            <h3>Tech Brand Identity</h3>
+                            <p>Branding, Logo Design</p>
+                            <a href="#" class="portfolio-link"><i class="fas fa-eye"></i> View Project</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item" data-category="web">
+                    <div class="portfolio-image glass-effect">
+                        <svg viewBox="0 0 400 300" class="placeholder-image">
+                            <rect width="400" height="300" fill="var(--dark-bg-color)" />
+                            <line x1="50" y1="50" x2="350" y2="50" stroke="var(--primary-blue)" stroke-width="4" />
+                            <line x1="50" y1="100" x2="250" y2="100" stroke="var(--primary-blue)" stroke-width="4" />
+                            <rect x="50" y="130" width="300" height="120" rx="10" fill="var(--accent-blue)" opacity="0.3" />
+                        </svg>
+                        <div class="portfolio-overlay">
+                            <h3>Corporate Website</h3>
+                            <p>Web Design, Development</p>
+                            <a href="#" class="portfolio-link"><i class="fas fa-eye"></i> View Project</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="about">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-image glass-effect">
+                    <svg viewBox="0 0 300 300" class="profile-placeholder">
+                        <circle cx="150" cy="120" r="80" fill="var(--primary-blue)" opacity="0.2" />
+                        <circle cx="150" cy="100" r="40" fill="var(--dark-bg-color)" stroke="var(--primary-blue)" stroke-width="2" />
+                        <path d="M90,220 Q150,280 210,220" stroke="var(--primary-blue)" stroke-width="3" fill="none" />
+                        <circle cx="120" cy="90" r="5" fill="var(--accent-blue)" />
+                        <circle cx="180" cy="90" r="5" fill="var(--accent-blue)" />
+                    </svg>
+                </div>
+                <div class="about-text">
+                    <h3>Web Designer & Developer</h3>
+                    <p>I am a passionate web designer with over 5 years of experience creating modern, sophisticated digital experiences for clients across various industries.</p>
+                    <p>My approach combines aesthetic design principles with technical expertise to deliver websites that not only look great but also perform exceptionally well.</p>
+                    <div class="skills">
+                        <div class="skill">
+                            <span>UI/UX Design</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 95%"></div>
+                            </div>
+                        </div>
+                        <div class="skill">
+                            <span>HTML/CSS</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div class="skill">
+                            <span>JavaScript</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div class="skill">
+                            <span>Responsive Design</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 92%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="about-buttons">
+                        <a href="#" class="btn primary-btn">
+                            <span>Download CV</span>
+                            <i class="fas fa-download"></i>
+                        </a>
+                        <a href="#contact" class="btn secondary-btn">
+                            <span>Contact Me</span>
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="section-subtitle">Let's discuss your project</div>
+            
+            <div class="contact-container">
+                <div class="contact-info glass-effect">
+                    <div class="contact-method">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Email</h3>
+                            <p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="c2aaa7aeaead82b5a7a0a6a7b1aba5aca7b0eca1adaf">[email&#160;protected]</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-method">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Phone</h3>
+                            <p>+1 (555) 123-4567</p>
+                        </div>
+                    </div>
+                    <div class="contact-method">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Location</h3>
+                            <p>San Francisco, CA</p>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-dribbble"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-behance"></i></a>
+                    </div>
+                </div>
+                
+                <form class="contact-form glass-effect">
+                    <div class="form-group">
+                        <input type="text" id="name" name="name" placeholder="Your Name" required>
+                        <label for="name">Your Name</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" name="email" placeholder="Your Email" required>
+                        <label for="email">Your Email</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="subject" name="subject" placeholder="Subject" required>
+                        <label for="subject">Subject</label>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" name="message" placeholder="Your Message" required></textarea>
+                        <label for="message">Your Message</label>
+                    </div>
+                    <button type="submit" class="btn primary-btn">
+                        <span>Send Message</span>
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="glass-effect">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <svg viewBox="0 0 200 60">
+                    <path d="M20,40 L40,20 L60,40 L80,20 L100,40" stroke="var(--primary-blue)" stroke-width="4" fill="none" />
+                    <text x="110" y="40" fill="var(--primary-blue)" font-size="28" font-weight="bold">DESIGN</text>
+                </svg>
+            </div>
+            <div class="footer-text">
+                <p>Creating stunning web experiences for forward-thinking businesses.</p>
+            </div>
+            <div class="footer-links">
+                <a href="#home">Home</a>
+                <a href="#services">Services</a>
+                <a href="#portfolio">Portfolio</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 Modern Web Design. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
+</html>
