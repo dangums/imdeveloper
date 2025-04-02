@@ -1080,7 +1080,7 @@ footer {
     }
 
     .logo-image {
-        height: 18px; /* Mantém a altura original */
+        height: 18.5px; /* Mantém a altura original */
         width: auto; /* Largura proporcional */
         align-items: center;
     }
@@ -1205,4 +1205,18 @@ footer {
         width: 300px;
         justify-content: center;
     }
+}
+
+@media (max-width: 375px) {
+    .logo {
+        width: 100px;
+    }
+
+    .logo-image {
+        height: 17px; /* Mantém a altura original */
+        width: auto; /* Largura proporcional */
+        align-items: center;
+    }
+
+
 }
