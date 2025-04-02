@@ -1,8 +1,12 @@
-import { gsap } from 'gsap';
+//import { gsap } from 'gsap';
+//import { ScrollTrigger } from 'gsap/ScrollTrigger.js';
 import config from './config.js';
 import translations from './translations.js';
 
-document.addEventListener('DOMContentLoaded', () => {
+gsap.registerPlugin(ScrollTrigger);
+
+document.addEventListener("DOMContentLoaded", () => {
+    handleConnection();
     // Initialize custom cursor
     initCursor();
     
@@ -21,6 +25,28 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize form validation
     initContactForm();
 });
+
+function handleConnection() {
+    const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+    const isSlowConnection = connection ? (connection.effectiveType === 'slow-2g' || 
+                                         connection.effectiveType === '2g' || 
+                                         connection.saveData === true) : false;
+    
+    if (isSlowConnection || window.matchMedia("(max-width: 768px)").matches) {
+        // Desativar animações pesadas
+        config.enableParallaxEffects = false;
+        config.animations.speedFast = 0;
+        config.animations.speedMedium = 0;
+        config.animations.speedSlow = 0;
+        
+        // Desativar vídeo de fundo
+        const heroVideo = document.querySelector('.hero-video');
+        if (heroVideo) {
+            heroVideo.pause();
+            heroVideo.remove();
+        }
+    }
+}
 
 function initCursor() {
     const cursor = document.querySelector('.cursor');
@@ -45,7 +71,7 @@ function initCursor() {
             duration: 0.3
         });
     });
-    
+
     // Change cursor on hover over links and buttons
     const links = document.querySelectorAll('a, button, .service-card, .portfolio-item');
     links.forEach(link => {
@@ -70,9 +96,16 @@ function initCursor() {
 function initNavbar() {
     const header = document.querySelector('header');
     const menuToggle = document.querySelector('.menu-toggle');
+    const navMenu = document.querySelector(".nav-menu");
     const navLinks = document.querySelectorAll('nav ul li a');
-    const nav = document.querySelector('nav ul');
+    const navList = document.querySelector('nav ul'); // Corrigido para navList
     
+    if (menuToggle && navMenu) {
+        menuToggle.addEventListener("click", function () {
+            navMenu.classList.toggle("active");
+        });
+    }
+
     // Handle navbar background on scroll
     window.addEventListener('scroll', () => {
         if (window.scrollY > 100) {
@@ -83,41 +116,47 @@ function initNavbar() {
     });
     
     // Mobile menu toggle
-    menuToggle.addEventListener('click', () => {
-        nav.classList.toggle('active');
-        menuToggle.querySelector('i').classList.toggle('fa-bars');
-        menuToggle.querySelector('i').classList.toggle('fa-times');
+    menuToggle.addEventListener('click', (e) => {
+        e.stopPropagation(); // Impede a propagação do evento
+        navList.classList.toggle('active');
+        menuToggle.classList.toggle('active');
+        
+        // Alterna entre ícone de menu e X
+        const icon = menuToggle.querySelector('i');
+        if (navList.classList.contains('active')) {
+            icon.classList.replace('fa-bars', 'fa-times');
+            document.body.style.overflow = 'hidden';
+        } else {
+            icon.classList.replace('fa-times', 'fa-bars');
+            document.body.style.overflow = '';
+        }
     });
     
-    // Close menu when clicking a link (for mobile)
+    // Fecha o menu ao clicar em um link
     navLinks.forEach(link => {
         link.addEventListener('click', () => {
-            nav.classList.remove('active');
-            menuToggle.querySelector('i').classList.add('fa-bars');
-            menuToggle.querySelector('i').classList.remove('fa-times');
+            navList.classList.remove('active');
+            menuToggle.querySelector('i').classList.replace('fa-times', 'fa-bars');
+            document.body.style.overflow = '';
         });
     });
     
-    // Active link highlighting based on scroll position
+    // Fecha o menu ao clicar fora
+    document.addEventListener('click', (e) => {
+        if (!navList.contains(e.target) && !menuToggle.contains(e.target)) {
+            navList.classList.remove('active');
+            menuToggle.querySelector('i').classList.replace('fa-times', 'fa-bars');
+            document.body.style.overflow = '';
+        }
+    });
+    
+    // Fecha o menu ao rolar
     window.addEventListener('scroll', () => {
-        let current = '';
-        
-        const sections = document.querySelectorAll('section');
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.clientHeight;
-            
-            if (scrollY >= (sectionTop - sectionHeight / 3)) {
-                current = section.getAttribute('id');
-            }
-        });
-        
-        navLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href') === `#${current}`) {
-                link.classList.add('active');
-            }
-        });
+        if (navList.classList.contains('active')) {
+            navList.classList.remove('active');
+            menuToggle.querySelector('i').classList.replace('fa-times', 'fa-bars');
+            document.body.style.overflow = '';
+        }
     });
 }
 
@@ -191,53 +230,58 @@ function initPortfolioFilters() {
 }
 
 function initAnimations() {
-    // Service cards animation
-    gsap.from('.service-card', {
-        y: 100,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.2,
-        ease: "back.out(1.7)",
-        scrollTrigger: {
-            trigger: '.services',
-            start: 'top 70%'
-        }
-    });
 
-    // Portfolio items animation
-    gsap.from('.portfolio-item', {
-        scale: 0.8,
-        opacity: 0,
-        duration: 0.6,
-        stagger: 0.15,
-        ease: "power2.out",
-        scrollTrigger: {
-            trigger: '.portfolio-grid',
-            start: 'top 70%'
-        }
-    });
-    
-    // About section animation
-    gsap.from('.about-image', {
-        x: -100,
-        opacity: 0,
-        duration: 0.8,
-        scrollTrigger: {
-            trigger: '.about-content',
-            start: 'top 70%'
-        }
-    });
-    
-    gsap.from('.about-text', {
-        x: 100,
-        opacity: 0,
-        duration: 0.8,
-        scrollTrigger: {
-            trigger: '.about-content',
-            start: 'top 70%'
-        }
-    });
-    
+    const isMobile = window.matchMedia("(max-width: 768px)").matches;
+    if (!isMobile) {
+
+        // Service cards animation
+            gsap.from('.service-card', {
+            y: 100,
+            opacity: 0,
+            duration: 0.8,
+            stagger: 0.2,
+            ease: "back.out(1.7)",
+            scrollTrigger: {
+                trigger: '.services',
+                start: 'top 70%'
+            }
+        });
+
+        // Portfolio items animation
+        gsap.from('.portfolio-item', {
+            scale: 0.8,
+            opacity: 0,
+            duration: 0.6,
+            stagger: 0.15,
+            ease: "power2.out",
+            scrollTrigger: {
+                trigger: '.portfolio-grid',
+                start: 'top 70%'
+            }
+        });
+        
+        // About section animation
+        gsap.from('.about-image', {
+            x: -100,
+            opacity: 0,
+            duration: 0.8,
+            scrollTrigger: {
+                trigger: '.about-content',
+                start: 'top 70%'
+            }
+        });
+        
+        gsap.from('.about-text', {
+            x: 100,
+            opacity: 0,
+            duration: 0.8,
+            scrollTrigger: {
+                trigger: '.about-content',
+                start: 'top 70%'
+            }
+        });
+    }
+
     // Contact section animation
     gsap.from('.contact-info, .contact-form', {
         y: 50,
@@ -249,22 +293,23 @@ function initAnimations() {
             start: 'top 70%'
         }
     });
-    
-    // Animate background shapes
-    gsap.to('.shape-1', {
-        rotation: 360,
-        duration: 30,
-        repeat: -1,
-        ease: "none"
-    });
-    
-    gsap.to('.shape-3', {
-        rotation: -360,
-        duration: 40,
-        repeat: -1,
-        ease: "none"
-    });
-}
+    if (!isMobile) {
+        // Animate background shapes
+        gsap.to('.shape-1', {
+            rotation: 360,
+            duration: 30,
+            repeat: -1,
+            ease: "none"
+        });
+        
+        gsap.to('.shape-3', {
+            rotation: -360,
+            duration: 40,
+            repeat: -1,
+            ease: "none"
+        });
+    }
+}    
 
 function initContactForm() {
     const form = document.querySelector('.contact-form');
