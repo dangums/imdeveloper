@@ -646,6 +646,17 @@ section {
     border-radius: 15px;
     overflow: hidden;
     padding: 1rem;
+    max-width: 400px; /* Limita a largura máxima */
+    margin: 0 auto; /* Centraliza a imagem */
+}
+
+.about-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+    object-fit: cover;
+    aspect-ratio: 2/3; /* Mantém proporção quadrada */
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3); /* Sombra consistente com o estilo */
 }
 
 .profile-placeholder {
@@ -1080,7 +1091,7 @@ footer {
     }
 
     .logo-image {
-        height: 18.5px; /* Mantém a altura original */
+        height: 19px; /* Mantém a altura original */
         width: auto; /* Largura proporcional */
         align-items: center;
     }
@@ -1218,5 +1229,15 @@ footer {
         align-items: center;
     }
 
+    .menu-toggle {
+        font-size: 1.25rem;
+    }
+    /*.menu-toggle.fa-bars {
+        font-size: 1.1rem;
+    }*/
+    .about-image {
+        width: 80%;
+        object-fit: cover;
+    }
 
 }
