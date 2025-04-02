@@ -334,6 +334,13 @@ nav ul li a.active {
     z-index: -1;
 }
 
+.hero-mobile-image {
+    display: none;
+    width: 100%;
+    height: auto;
+    /*border-radius: 15px;*/
+}
+
 /* Adicionando degradê de transparência na borda direita */
 .hero::after {
     content: "";
@@ -1090,6 +1097,7 @@ footer {
         padding: 1.5rem;
         margin-left: 0;
         background: rgba(18, 18, 18, 0.7);
+        top: 5px;
     }
     
     .hero h1 {
@@ -1101,13 +1109,33 @@ footer {
         font-size: 1rem;
     }
     
+    .hero-video-container {
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+
     .hero-video {
-        left: 50%;
+        display: none; /* Esconde o vídeo em mobile */
+    }
+
+    .hero-mobile-image {
+        display: block !important;
+        position: absolute;
+        top: 0;
+        left: 0;
         width: 100%;
         height: 100%;
         object-fit: cover;
+        z-index: -1;
+        opacity: 0.5;
     }
-    
+
+    /* Ajuste de posicionamento se necessário */
+    .hero::after {
+        background: linear-gradient(to left, #121212 10%, transparent);
+    }
+
     /* Seções */
     section {
         padding: 60px 5%;
