@@ -558,22 +558,25 @@ section {
 }
 
 .portfolio-item {
-    overflow: hidden;
+    flex: 1;
     border-radius: 15px;
-    transition: transform var(--transition-medium);
+    overflow: hidden;
+    padding: 1rem;
+    max-width: 400px; /* Limita a largura máxima */
+    margin: 0 auto; /* Centraliza a imagem */
 }
 
 .portfolio-image {
-    position: relative;
-    overflow: hidden;
-    border-radius: 15px;
-    aspect-ratio: 4/3;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Mantém a proporção cobrindo todo o espaço */
+    object-position: center; /* Centraliza a imagem */
+    border-radius: 15px; /* Mantém o arredondamento existente */
+    aspect-ratio: 4/3; /* Mantém a proporção original do container (igual ao SVG) */
 }
 
 .placeholder-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    display: none;
 }
 
 .portfolio-overlay {
@@ -593,6 +596,7 @@ section {
 
 .portfolio-image:hover .portfolio-overlay {
     opacity: 1;
+    border-radius: 15px;
 }
 
 .portfolio-overlay h3 {
@@ -839,6 +843,17 @@ section {
 .form-group textarea {
     min-height: 150px;
     resize: vertical;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    opacity: 0;
+    transition: opacity var(--transition-fast);
+}
+
+.form-group input:focus::placeholder,
+.form-group textarea:focus::placeholder {
+    opacity: 1;
 }
 
 /* Footer */
@@ -1229,6 +1244,10 @@ footer {
         align-items: center;
     }
 
+    .hero h1 {
+        font-size: 2rem;
+    }
+
     .menu-toggle {
         font-size: 1.25rem;
     }
@@ -1239,5 +1258,4 @@ footer {
         width: 80%;
         object-fit: cover;
     }
-
 }
